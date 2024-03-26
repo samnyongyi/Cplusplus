@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cstdlib> // ¹®ÀÚ¿­À» »ç¿ëÇÏ±â À§ÇØ cstdlib¸¦ Æ÷ÇÔ
+#include <cstdlib> // ë¬¸ìì—´ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ cstdlibë¥¼ í¬í•¨
 
 using namespace std;
 
@@ -26,20 +26,28 @@ Date::Date(int a, int b, int c){
 }
 
 Date::Date(string str1){
-	str = str1; // str1À» Å¬·¡½º ¸â¹ö str¿¡ ÇÒ´ç
+	str = str1; // str1ì„ í´ë˜ìŠ¤ ë©¤ë²„ strì— í• ë‹¹
 }
 
 string Date::show(){
 	string s = str;
-	int index_y = s.find("/", 0); //find(Ã£À» ¹®ÀÚ¿­, ½ÃÀÛÀ§Ä¡)
+	int index_y = s.find("/", 0); //find(ì°¾ì„ ë¬¸ìì—´, ì‹œì‘ìœ„ì¹˜)
 	int index_m = s.find("/", index_y + 1);
 	int index_d = s.find("/", index_m + 1);
 	string y = s.substr(0, index_y);
 	string m = s.substr(index_y + 1, index_m - index_y - 1);
 	string d = s.substr(index_m + 1, index_d - index_m - 1);
 	
-	return y + "³â" + m + "¿ù" + d + "ÀÏ"; // ¼­½ÄÀÌ ÀÖ´Â ¹®ÀÚ¿­À» ¹İÈ¯
+	return y + "ë…„" + m + "ì›”" + d + "ì¼"; // ì„œì‹ì´ ìˆëŠ” ë¬¸ìì—´ì„ ë°˜í™˜
 }
+/*
+	void Date::show() {
+    year = stoi(str.substr(0, str.find("/")));
+    int nextSlash = str.find("/", str.find("/") + 1);
+    month = stoi(str.substr(str.find("/") + 1, nextSlash - str.find("/") - 1));
+    day = stoi(str.substr(nextSlash + 1));
+}
+*/
 
 int Date::getYear(){
 	return year;
@@ -57,7 +65,7 @@ int main() {
 	Date birth(2014, 3, 30);
 	Date independDay("1945/8/15");
 
-	cout << independDay.show() << endl; // °á°ú¸¦ Ç¥½ÃÇÏ±â À§ÇØ coutÀ» »ç¿ë
+	cout << independDay.show() << endl; // ê²°ê³¼ë¥¼ í‘œì‹œí•˜ê¸° ìœ„í•´ coutì„ ì‚¬ìš©
 	cout << birth.getYear() << "," << birth.getMonth() << "," << birth.getDay() << endl;
 }
 
